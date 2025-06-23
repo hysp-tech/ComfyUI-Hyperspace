@@ -1,2 +1,2 @@
-# comfy-hyperspace-plugins
+# ComfyUI-Hyperspace
 Comfy Hyperspace Plugins
