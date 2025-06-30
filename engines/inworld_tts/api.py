@@ -62,6 +62,10 @@ def inworld_tts(tts_input: InworldTTSInput) -> InworldTTSOutput:
         "modelId": tts_input.model_id,
     }
 
+    print(f"Payload: {payload}")
+    print(f"Headers: {headers}")
+    print(f"URL: {url}")
+
     try:
         response = requests.post(url, json=payload, headers=headers)
         response.raise_for_status()
