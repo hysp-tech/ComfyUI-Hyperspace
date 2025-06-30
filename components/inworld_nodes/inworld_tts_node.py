@@ -1,5 +1,5 @@
 import comfy.utils
-from engines.inworld_tts import inworld_tts, InworldTTSInput, validate_text, truncate_text
+from ...engines.inworld_tts import inworld_tts, InworldTTSInput, validate_text, truncate_text
 
 
 class InworldTTSNode:

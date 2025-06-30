@@ -4,8 +4,6 @@ Configuration module for Inworld TTS
 This module contains configuration constants and settings for the Inworld TTS engine.
 """
 
-from typing import Dict, List
-
 # Default API settings
 DEFAULT_API_BASE = "https://api.inworld.ai"
 DEFAULT_MODEL_ID = "inworld-tts-1"
@@ -46,11 +44,11 @@ SUPPORTED_AUDIO_FORMATS = ["wav", "mp3", "ogg"]
 # Rate limiting (requests per minute)
 RATE_LIMIT_RPM = 60
 
-def get_voice_options() -> List[str]:
+def get_voice_options() -> list[str]:
     """Get list of available voice options"""
     return VOICE_IDS.copy()
 
-def get_model_options() -> List[str]:
+def get_model_options() -> list[str]:
     """Get list of available model options"""
     return MODEL_IDS.copy()
 

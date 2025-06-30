@@ -1,5 +1,5 @@
 import comfy.utils
-from engines.inworld_tts.utils import save_audio_file, validate_audio_format, get_audio_info
+from ...engines.inworld_tts.utils import save_audio_file, validate_audio_format, get_audio_info
 
 
 class InworldAudioSaveNode:

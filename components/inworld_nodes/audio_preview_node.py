@@ -1,6 +1,5 @@
 import comfy.utils
-from engines.inworld_tts.utils import get_audio_info
-
+from ...engines.inworld_tts.utils import get_audio_info
 
 class InworldAudioPreviewNode:
     @classmethod
