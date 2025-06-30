@@ -11,9 +11,9 @@ class InworldAudioPreviewNode:
             "required": {
                 "audio": ("AUDIO",),
             },
-            "optional": {
-                "show_info": ("BOOLEAN", {"default": True}),
-            },
+            # "optional": {
+            #     "show_info": ("BOOLEAN", {"default": True}),
+            # },
         }
 
     RETURN_TYPES = ()
