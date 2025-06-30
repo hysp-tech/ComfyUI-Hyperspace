@@ -29,7 +29,7 @@ class InworldAudioPreviewNode:
         audio = kwargs["audio"]
         if audio is None:
             print("No audio data to preview")
-            return
+            return ()
 
         try:
             waveform = audio["waveform"]
@@ -52,3 +52,5 @@ class InworldAudioPreviewNode:
 
         except Exception as e:
             print(f"Error previewing audio: {str(e)}")
+
+        return ()
