@@ -63,7 +63,7 @@ def inworld_tts(tts_input: InworldTTSInput) -> InworldTTSOutput:
     }
 
     print(f"Payload: {payload}")
-    print(f"Headers: {headers}")
+    # print(f"Headers: {headers}")
     print(f"URL: {url}")
 
     try:
@@ -73,7 +73,7 @@ def inworld_tts(tts_input: InworldTTSInput) -> InworldTTSOutput:
         audio_content = base64.b64decode(result["audioContent"])
 
         print(f"Result: {result}")
-        print(f"Audio content: {audio_content}")
+        # print(f"Audio content: {audio_content}")
 
         return InworldTTSOutput(audio_content=audio_content)
     except requests.exceptions.RequestException as e:
