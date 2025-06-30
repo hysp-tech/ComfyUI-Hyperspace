@@ -21,7 +21,7 @@ class InworldAudioSaveNode:
     FUNCTION = "run"
     TITLE = "Inworld Audio Save"
 
-    CATEGORY = "Inworld/TTS"
+    CATEGORY = "Inworld"
     DESCRIPTION = "Save audio bytes to a file with validation"
 
     def __init__(self):

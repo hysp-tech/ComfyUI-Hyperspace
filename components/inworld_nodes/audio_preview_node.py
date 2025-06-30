@@ -1,7 +1,10 @@
 import comfy.utils
 from ...engines.inworld_tts.utils import get_audio_info
 
+
 class InworldAudioPreviewNode:
+    OUTPUT_NODE = True
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -10,48 +13,42 @@ class InworldAudioPreviewNode:
             },
             "optional": {
                 "show_info": ("BOOLEAN", {"default": True}),
-            }
+            },
         }
 
-    RETURN_TYPES = ("AUDIO",)
-    RETURN_NAMES = ("audio",)
-    FUNCTION = "run"
+    RETURN_TYPES = ()
+    FUNCTION = "preview"
     TITLE = "Inworld Audio Preview"
-
-    CATEGORY = "Inworld/TTS"
-    DESCRIPTION = "Preview audio bytes with detailed information"
+    CATEGORY = "Inworld"
+    DESCRIPTION = "Preview audio with detailed information"
 
     def __init__(self):
         pass
 
-    def run(self, **kwargs):
+    def preview(self, **kwargs):
         audio = kwargs["audio"]
-        show_info = kwargs.get("show_info", True)
-        
         if audio is None:
             print("No audio data to preview")
-            return (None,)
-        
+            return
+
         try:
-            if show_info:
-                # Get and display detailed audio info
-                sample_rate, channels, duration = get_audio_info(audio)
-                if sample_rate:
-                    print(f"Audio Preview:")
-                    print(f"  Sample rate: {sample_rate} Hz")
-                    print(f"  Channels: {channels}")
-                    print(f"  Duration: {duration:.2f} seconds")
-                    print(f"  Size: {len(audio)} bytes")
-                    print(f"  Format: {'Stereo' if channels == 2 else 'Mono'} WAV")
-                else:
-                    print(f"Audio preview ready - Size: {len(audio)} bytes")
-            else:
-                print(f"Audio preview ready - Size: {len(audio)} bytes")
-                
-            # For ComfyUI preview, we just pass through the audio
-            # The ComfyUI interface will handle the preview automatically
-            return (audio,)
-            
+            waveform = audio["waveform"]
+            sample_rate = audio["sample_rate"]
+
+            # Get information from tensor
+            num_samples = waveform.shape[-1]
+            channels = waveform.shape[1]
+            duration = num_samples / sample_rate
+
+            print(f"Audio Preview Info: {''}")
+            print(f"  Sample rate: {sample_rate} Hz")
+            print(f"  Channels: {channels}")
+            print(f"  Duration: {duration:.2f} seconds")
+            print(f"  Tensor shape: {list(waveform.shape)}")
+
+            # ComfyUI frontend will automatically handle preview. This node is now mainly used to print information to the console.
+            # Because RETURN_TYPES is empty, nothing is returned here.
+            # If you want to pass the audio down, you can change RETURN_TYPES to ("AUDIO",) and return (audio,)
+
         except Exception as e:
             print(f"Error previewing audio: {str(e)}")
-            return (None,) 
