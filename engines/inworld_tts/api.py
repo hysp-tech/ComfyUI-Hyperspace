@@ -68,6 +68,9 @@ def inworld_tts(tts_input: InworldTTSInput) -> InworldTTSOutput:
         result = response.json()
         audio_content = base64.b64decode(result["audioContent"])
 
+        print(f"Result: {result}")
+        print(f"Audio content: {audio_content}")
+
         return InworldTTSOutput(audio_content=audio_content)
     except requests.exceptions.RequestException as e:
         raise Exception(f"API request failed: {str(e)}")
